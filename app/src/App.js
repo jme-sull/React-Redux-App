@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './App.css';
 
 import { getJoke } from './actions'
+import Character from './componets/Character';
 
 const App = props => {
   
@@ -10,13 +11,22 @@ const App = props => {
     e.preventDefault();
     props.getJoke();
   }
+
+ 
   
   return (
     <>
       <h2> Rick and Morty </h2>
-      {props.joke.map(item => (
-        <h3 key={item.id}>{item.name}</h3>
-      ))}
+      
+      {
+        props.joke.map(item => (
+          <Character key={item.id} character={item}/>
+        ))
+
+      }
+
+      
+      
 
       <button onClick={fetchJokes}>Click Me</button>
 
