@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { jokeReducer } from './jokeReducer'
+import { allCharactersReducer } from './allCharactersReducer'
 
 export default combineReducers({
-    jokeReducer
+    allCharactersReducer
 })

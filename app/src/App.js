@@ -2,14 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 
-import { getJoke } from './actions'
+import { Button } from '@material-ui/core'
+
+
+import { getAllCharacters } from './actions'
 import Character from './componets/Character';
 
 const App = props => {
   
-  const fetchJokes = e => {
+  const fetchAllCharacters = e => {
     e.preventDefault();
-    props.getJoke();
+    props.getAllCharacters();
   }
 
  
@@ -19,16 +22,16 @@ const App = props => {
       <h2> Rick and Morty </h2>
       
       {
-        props.joke.map(item => (
+        props.characters.map(item => 
           <Character key={item.id} character={item}/>
-        ))
+        )
 
       }
 
       
       
 
-      <button onClick={fetchJokes}>Click Me</button>
+      <Button onClick={fetchAllCharacters}>Get All Characters</Button>
 
     </>
     
@@ -38,12 +41,12 @@ const App = props => {
 
 const mapStateToProps = state => {
   return {
-    joke: state.jokeReducer.joke,
-    error: state.error,
-    isFetching: state.isFetching
+    characters: state.allCharactersReducer.characters,
+    error: state.allCharactersReducer.error,
+    isFetching: state.allCharactersReducer.isFetching
   }
 }
 
 
 
-export default connect(mapStateToProps, { getJoke })(App);
+export default connect(mapStateToProps, { getAllCharacters })(App);
