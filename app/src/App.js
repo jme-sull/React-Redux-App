@@ -27,11 +27,9 @@ const App = props => {
     <>
       <h2> Rick and Morty </h2>
       
-      {
-        props.characters.map(item => 
-          <Character key={item.id} character={item}/>
-        )
-
+      {  
+          props.characters.map(item => 
+            <Character key={item.id} character={item}/>) 
       }
 
       {
