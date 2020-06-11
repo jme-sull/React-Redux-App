@@ -24,17 +24,21 @@ const App = props => {
  
   
   return (
-    <>
+    <div className='App'> 
       <h2> Rick and Morty </h2>
+
+      <div className="characters-container">
       
       {  
           props.characters.map(item => 
             <Character key={item.id} character={item}/>) 
       }
 
+
       {
         <Character character={props.character}/>
       }
+      </div>
 
       
       
@@ -42,7 +46,7 @@ const App = props => {
       <button onClick={fetchAllCharacters}>Get All Characters</button>
       <button onClick={fetchRandomCharacter}>Get Random Character</button>
 
-    </>
+    </div>
     
   )
   
