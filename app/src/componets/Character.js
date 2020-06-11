@@ -1,10 +1,16 @@
 import React from 'react'
 import {
     Card, CardImg, CardBody,
-    CardTitle, CardSubtitle
+    CardTitle, CardSubtitle, Button
   } from 'reactstrap';
 
+import { connect } from 'react-redux'
+
+import { saveCharacter } from '../actions/saveCharacterAction.js'
+
+
 const Character = props => {
+
 
     return(
        
@@ -20,10 +26,14 @@ const Character = props => {
                 <CardTitle>Name: {props.character.name}</CardTitle>
                 <CardSubtitle>Status: {props.character.status}</CardSubtitle>
                 <CardSubtitle>Species: {props.character.species}</CardSubtitle>
-            </CardBody>
+                <button onClick={() => props.saveCharacter(props.character)}>Save Character</button>
+            </CardBody> 
+    
     </Card>
+
+       
     )
 
 }
 
-export default Character
+export default connect (null, { saveCharacter })(Character)

@@ -7,7 +7,10 @@ import { Button } from '@material-ui/core'
 
 import { getAllCharacters } from './actions'
 import { getRandomCharacter } from './actions'
+
 import Character from './componets/Character';
+import saveCharacter from './componets/saveCharacter'
+import SavedCharacter from './componets/saveCharacter';
 
 const App = props => {
   
@@ -25,19 +28,32 @@ const App = props => {
   
   return (
     <div className='App'> 
+
       <h2> Rick and Morty </h2>
+
+
 
       <div className="characters-container">
       
-      {  
-          props.characters.map(item => 
-            <Character key={item.id} character={item}/>) 
-      }
+            { 
+                props.characters.map(item => 
+                  <Character key={item.id} character={item}/>) 
+                
+            }
 
 
-      {
-        <Character character={props.character}/>
-      }
+            {
+                  <Character character={props.character}/>
+            }
+
+            {
+              props.savedCharacters.map(item =>
+                <SavedCharacter character={item}/>)
+            }
+
+
+
+
       </div>
 
       
@@ -57,7 +73,9 @@ const mapStateToProps = state => {
     characters: state.allCharactersReducer.characters,
     error: state.allCharactersReducer.error,
     isFetching: state.allCharactersReducer.isFetching,
-    character: state.randomCharacterReducer.character
+    character: state.randomCharacterReducer.character,
+    savedCharacters: state.saveCharactersReducer.savedCharacters
+
   }
 }
 

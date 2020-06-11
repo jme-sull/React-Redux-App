@@ -22,6 +22,7 @@ export const getAllCharacters = () => dispatch => {
         dispatch({type: FETCH_CHARACTERS_FAIL, payload: err}))
 };
 
+
 export const getRandomCharacter = () => dispatch => {
 
     const id = Math.floor(Math.random() * Math.floor(592))
@@ -34,6 +35,8 @@ export const getRandomCharacter = () => dispatch => {
         dispatch({type: FETCH_RANDOM_CHARACTER_FAIL, payload: err}))
         
     };
+
+
 
 
 
