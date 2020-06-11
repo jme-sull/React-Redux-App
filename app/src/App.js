@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 
 import { Button } from '@material-ui/core'
@@ -27,31 +28,47 @@ const App = props => {
  
   
   return (
-    <div className='App'> 
-
+    
+  <div className='App'> 
       <h2> Rick and Morty </h2>
+        <nav>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/saved'>Saved</Link>
+          </li>
+          
+          
+        </nav>
 
 
+    
+        <div className="characters-container">
 
-      <div className="characters-container">
-      
-            { 
-                props.characters.map(item => 
-                  <Character key={item.id} character={item}/>) 
-                
-            }
+          <Switch>
+              <Route path='/all'>
+                { 
+                    props.characters.map(item => 
+                      <Character key={item.id} character={item}/>)      
+                }
+            </Route>
 
+            <Route path='/random'>
 
-            {
+                {
                   <Character character={props.character}/>
-            }
+                }
+            </Route>
 
-            {
-              props.savedCharacters.map(item =>
-                <SavedCharacter character={item}/>)
-            }
-
-
+              <Route path='/saved'>
+                    {
+                      props.savedCharacters.map(item =>
+                        <Character character={item}/>)
+                    }
+              </Route>
+   
+    </Switch>
 
 
       </div>
@@ -59,8 +76,12 @@ const App = props => {
       
       
 
-      <button onClick={fetchAllCharacters}>Get All Characters</button>
-      <button onClick={fetchRandomCharacter}>Get Random Character</button>
+      <button onClick={fetchAllCharacters}>
+        <Link to='/all'>Get All Characters</Link>
+        </button>
+      <button onClick={fetchRandomCharacter}>
+        <Link to='/random'>Get Random Character</Link>
+        </button>
 
     </div>
     
