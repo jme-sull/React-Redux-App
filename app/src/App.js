@@ -39,8 +39,7 @@ const App = props => {
             <Link to='/saved'>Saved</Link>
           </li>
           
-          
-        </nav>
+       </nav>
 
 
     
